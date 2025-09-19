@@ -1,19 +1,17 @@
 # Stage 1: Build Angular frontend
 FROM node:20-alpine AS frontend-builder
-WORKDIR /app
-COPY frontend/package*.json ./frontend/
 WORKDIR /app/frontend
-RUN npm install
-COPY frontend/ ./ 
+COPY frontend/package*.json ./
+RUN npm install --legacy-peer-deps
+COPY frontend/ .
 RUN npm run build -- --configuration production
 
 # Stage 2: Build Spring Boot backend
 FROM maven:3.9.3-eclipse-temurin-17 AS backend-builder
-WORKDIR /app
-COPY backend/pom.xml ./backend/
 WORKDIR /app/backend
+COPY backend/pom.xml ./
 RUN mvn dependency:go-offline
-COPY backend/ ./
+COPY backend/ .
 # Skopíruj Angular build do Spring Boot static
 COPY --from=frontend-builder /app/frontend/dist/ ./src/main/resources/static/
 RUN mvn package -DskipTests
