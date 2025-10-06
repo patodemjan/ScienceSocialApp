@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://sciencesocialapp.onrender.com/api' // tvoj backend na Renderi
+  apiUrl: 'https://sciencesocialapp-1.onrender.com/api'  // backend na Renderi
 };
