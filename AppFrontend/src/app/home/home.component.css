@@ -1,0 +1,46 @@
+/* Video fullscreen */
+.video-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+/* Karty na popredi */
+.cards-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  gap: 2rem;
+  transform: translate(-50%, -50%);
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.8); /* polopriehľadná biela */
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
