@@ -10,5 +10,5 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [RouterModule, HttpClientModule]
 })
 export class AppComponent {
-  title = 'AppFrontend';
+  
 }
