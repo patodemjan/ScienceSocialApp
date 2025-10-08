@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },  // Root route
-  { path: '**', redirectTo: '' }           // Fallback route
+  { path: '', component: HomeComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
