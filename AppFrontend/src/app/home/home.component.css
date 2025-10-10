@@ -1,3 +1,22 @@
+#title{
+position: absolute;
+left: 50%;
+top: 15%;
+transform: translate(-50%, -50%);
+font-family: Georgia, serif;
+font-size: 6rem;
+letter-spacing: 0.6px;
+word-spacing: 3.6px;
+color: rgb(71, 61, 61);
+font-weight: normal;
+font-style: oblique;
+font-variant: normal;
+font-weight: 600;
+animation: myAnim 2s ease 0s 1 normal forwards;
+
+
+}
+
 .video-container {
   position: relative;
   width: 100%;
@@ -21,7 +40,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  gap: 2rem;
+  gap: 5rem;
 }
 
 .card {
@@ -30,21 +49,28 @@
   border-radius: 20px;
   padding: 2rem 4rem;
   color: rgb(71, 61, 61);
-  font-size: 1.5rem;
   text-align: center;
   font-size: 3rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 1.5s ease;
   backdrop-filter: blur(5px);
   width: 25rem;
   height: 20rem;
   align-content: center;
+
+
+  
 }
+
 
 .card:hover {
   background: rgba(255, 255, 255, 0.4);
   transform: scale(1.05);
+    transform: rotateY(360deg) scale(1.05);
 }
 
-
+@keyframes myAnim {
+  0% { transform: translate(-50%, -50%) scale(0.5); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
 
