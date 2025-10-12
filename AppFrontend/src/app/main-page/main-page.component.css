@@ -34,9 +34,11 @@ header::before {
     z-index: 0;
 }
 
-header p{
+header h1{
+    margin-top: 10%;
     animation: myAnim 2s ease 0s 1 normal forwards;
 }
+
 
 nav{
     max-width: 100%;
