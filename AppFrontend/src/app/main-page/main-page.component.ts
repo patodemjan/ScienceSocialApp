@@ -1,22 +1,43 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd, RouterModule } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main-page',
-  imports: [],
+  standalone: true,
+  imports: [RouterModule], // ✅ sem to pridaj
   templateUrl: './main-page.component.html',
-  styleUrl: './main-page.component.css'
+  styleUrls: ['./main-page.component.css']
 })
-export class MainPageComponent {
-  constructor(private router: Router) { }
+export class MainPageComponent implements OnInit {
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    // Ak chceš, aby reagoval aj na reload
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        console.log('MainPageComponent reloaded');
+      });
+  }
 
   navigateTo(path: string) {
-    if(path === 'help') {
-      this.router.navigate(['/help']);
-    } else if(path === 'faq') {
-      this.router.navigate(['/faq']);
-    } else if(path === 'Cookies settings') {
-      this.router.navigate(['/cookies']);
+    switch (path) {
+      case 'help':
+        this.router.navigate(['/help']);
+        break;
+      case 'faq':
+        this.router.navigate(['/faq']);
+        break;
+      case 'cookies':
+        this.router.navigate(['/cookies']);
+        break;
+      case 'mainpage':
+        this.router.navigate(['/mainpage']);
+        break;
+      default:
+        this.router.navigate(['/']);
+        break;
     }
   }
 }
