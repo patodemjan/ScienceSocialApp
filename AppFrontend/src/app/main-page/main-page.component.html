@@ -5,7 +5,7 @@
 
 <nav>
   <a routerLink="/home">Home</a>
-  <a routerLink="/mainpage/about">About us</a> <!-- 👈 ide priamo na nový komponent -->
+  <a routerLink="/mainpage/about">About us</a> 
   <a href="home.component.html">Rooms</a>
   <a href="home.component.html">Contact</a>
   <a href="home.component.html">Login</a>
@@ -14,11 +14,38 @@
 <router-outlet></router-outlet>
 
 <footer class="footer">
+   
+
+   <div class="footeritems">
+    <a routerLink="/home">home</a>
+    <a routerLink="/mainpage/about">about us</a> 
+    <a href="home.component.html">rooms</a>
+    <a href="home.component.html">contact</a>
+    <a href="home.component.html">login</a>
+   </div>
+
+   <div class="footeritems">
     <a (click)="navigateTo('help')">help</a>
     <a (click)="navigateTo('faq')">faq</a>
     <a (click)="navigateTo('cookies')">cookies</a>
+    <a (click)="navigateTo('impressum')">impressum</a>
+   </div>
+
+    <div class="footeritems">
+    <a href="https://www.linkedin.com/in/patrik-demjan-90602429b/" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    <a href="https://github.com/patodemjan/" target="_blank">
+        <i class="fab fa-github"></i> GitHub
+    </a>
+    <a href="mailto:patodemjan@gmail.com">
+        <i class="fas fa-envelope"></i> Email
+    </a>
+</div>
+
+
     
-    <div id="allrights">
+    <span id="allrights">
         <p>© 2025 My Company. All rights reserved.</p>
-    </div>
+    </span>
 </footer>
