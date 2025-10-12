@@ -1,3 +1,30 @@
 header{
-    background-image: url(assets/titlePic.jpg);
+    background-image: url("/assets/titlePic.jpg");
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 30vh;
+  background-color: rgb(36, 34, 34);
+  color: antiquewhite;
+  position: absolute;
+  bottom: 0;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+footer a {
+  color: antiquewhite;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+/* Push this element to the bottom of the footer */
+#allrights {
+  margin-top: auto;
+  text-align: center;
+  padding-bottom: 10px;
 }
