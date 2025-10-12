@@ -13,8 +13,6 @@ font-style: oblique;
 font-variant: normal;
 font-weight: 600;
 animation: myAnim 2s ease 0s 1 normal forwards;
-
-
 }
 
 .video-container {
@@ -58,10 +56,7 @@ animation: myAnim 2s ease 0s 1 normal forwards;
   height: 20rem;
   align-content: center;
 
-
-  
 }
-
 
 .card:hover {
   background: rgba(255, 255, 255, 0.4);

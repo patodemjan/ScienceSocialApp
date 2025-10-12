@@ -5,11 +5,7 @@
   "projects": {
     "AppFrontend": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": { "standalone": false },
-        "@schematics/angular:directive": { "standalone": false },
-        "@schematics/angular:pipe": { "standalone": false }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -27,15 +23,10 @@
               "src/assets",
               "src/_redirects"
             ],
-            "styles": ["src/styles.css"],
-            "scripts": []
+            "styles": ["src/styles.css"]
           },
           "configurations": {
             "production": {
-              "budgets": [
-                { "type": "initial", "maximumWarning": "500kB", "maximumError": "1MB" },
-                { "type": "anyComponentStyle", "maximumWarning": "4kB", "maximumError": "8kB" }
-              ],
               "outputHashing": "all"
             },
             "development": {
@@ -49,8 +40,12 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": { "buildTarget": "AppFrontend:build:production" },
-            "development": { "buildTarget": "AppFrontend:build:development" }
+            "production": {
+              "buildTarget": "AppFrontend:build:production"
+            },
+            "development": {
+              "buildTarget": "AppFrontend:build:development"
+            }
           },
           "defaultConfiguration": "development"
         }
