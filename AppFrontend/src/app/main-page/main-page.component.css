@@ -91,7 +91,8 @@ footer {
   flex-direction: row;
   align-items: center;
   text-align: center;
-  justify-content: space-between;  
+  justify-content: space-between; 
+  position:static; 
   
  
 }
@@ -100,6 +101,7 @@ footer a {
   color: antiquewhite;
   text-decoration: none;
   font-size: 20px;
+  
 
   
 }
@@ -107,16 +109,15 @@ footer a {
 .footeritems{
     display: flex;
     flex-direction: column;
+    
 }
-
-
 
 #allrights {
   display: flex;
   position: absolute;
   text-align:left;
-  top: 100%;
   left: 2%;
+  align-self: flex-end;
   align-content: center;
 }
 
