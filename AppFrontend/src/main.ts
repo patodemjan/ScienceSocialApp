@@ -3,6 +3,8 @@ import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
 import { AppRoutingModule } from './app/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
 
 //git push firt commit
 bootstrapApplication(AppComponent, {
@@ -10,3 +12,7 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(HttpClientModule, AppRoutingModule)
   ]
 }).catch(err => console.error(err));
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch(err => console.error(err));
