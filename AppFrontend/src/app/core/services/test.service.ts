@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { HomeComponent } from '../../home/home.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestService {
-  private baseUrl = HomeComponent.apiUrl; // použije apiUrl z environment
+  private baseUrl = environment.apiUrl; // použije apiUrl z environment
 
   constructor(private http: HttpClient) {}
 
