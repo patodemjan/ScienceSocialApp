@@ -69,3 +69,37 @@ animation: myAnim 2s ease 0s 1 normal forwards;
   100% { transform: translate(-50%, -50%) scale(1); }
 }
 
+@media (max-width: 768px) {
+#title {
+position: absolute;
+left: 50%;
+top: 15%;
+transform: translate(-50%, -50%);
+font-family: Georgia, serif;
+font-size: 2rem;
+letter-spacing: 0.6px;
+word-spacing: 3.6px;
+color: rgb(71, 61, 61);
+font-weight: normal;
+font-style: oblique;
+font-variant: normal;
+font-weight: 600;
+animation: myAnim 2s ease 0s 1 normal forwards;
+  }
+
+  .overlay {
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    align-items: center;
+  }
+
+  .card {
+    width: 90vw;
+    max-width: 100px;
+    height: 5.5rem;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+
+}
