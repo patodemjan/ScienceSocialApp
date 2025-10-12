@@ -13,7 +13,7 @@ export class HomeComponent {
 
   navigateTo(path: string) {
     if(path === 'visit') {
-      this.router.navigate(['/visit-us']);
+      this.router.navigate(['/mainpage']);
     } else if(path === 'create-profile') {
       this.router.navigate(['/create-profile']);
     }
