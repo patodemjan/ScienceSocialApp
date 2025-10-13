@@ -3,7 +3,7 @@
 header {
     background-image: url("/assets/titlePic.jpg");
     max-width: 100vw;
-    height: 30vw;
+    height: 30vh;
     text-align: center;
     align-content: center;   
 }
@@ -35,7 +35,7 @@ header::before {
 }
 
 header h1{
-    margin-top: 10%;
+    margin-top: 5%;
     animation: myAnim 2s ease 0s 1 normal forwards;
 }
 
@@ -52,12 +52,23 @@ nav{
     position: sticky;
 }
 
+#menu-toogle{
+    display: none;
+}
+
+/* Hide menu button by default */
+.menu-button-container {
+    display: none;
+}
+
 nav a{
     text-decoration: none;
     color: antiquewhite;
     align-content: center;
     font-size: 1.5rem;
 }
+
+
 
 .text{
     padding-left: 10%;
@@ -123,7 +134,7 @@ footer a {
     header {
     background-image: url("/assets/titlePic.jpg");
     max-width: 100vw;
-    height: 30vw;
+    height: 35vh;
     text-align: center;
     align-content: center;
 }
@@ -139,6 +150,7 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     font-size: 1rem;
+
 }
 
 header * {
@@ -149,6 +161,77 @@ header * {
 header h1{
     margin-top: 20%;
 }
+
+nav {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
+
+  /* samotné odkazy sa štandardne skryjú */
+  nav a {
+    display: none;
+    width: 100%;
+    padding: 10px 0;
+    background-color: rgb(36, 34, 34);
+    text-align: center;
+    border-top: 1px solid #555;
+  }
+
+  /* checkbox: keď je zapnutý, odkazy sa ukážu */
+  #menu-toogle:checked ~ a {
+    display: block;
+  }
+
+  /* hamburger ikona */
+  .menu-button-container {
+    display: block;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    margin: 10px;
+  }
+
+  .menu-button,
+  .menu-button::before,
+  .menu-button::after {
+    content: '';
+    background-color: antiquewhite;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    transition: 0.3s;
+  }
+
+  .menu-button {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .menu-button::before {
+    top: -8px;
+  }
+
+  .menu-button::after {
+    top: 8px;
+  }
+
+  /* efekt premeny na X */
+  #menu-toogle:checked + .menu-button-container .menu-button {
+    background: transparent;
+  }
+
+  #menu-toogle:checked + .menu-button-container .menu-button::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  #menu-toogle:checked + .menu-button-container .menu-button::after {
+    transform: rotate(-45deg);
+    top: 0;
+  }
 
 footer a {
   color: antiquewhite;

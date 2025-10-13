@@ -4,11 +4,15 @@
 </header>
 
 <nav>
-  <a routerLink="/home">Home</a>
-  <a routerLink="/mainpage/about">About us</a> 
-  <a href="home.component.html">Rooms</a>
-  <a href="home.component.html">Contact</a>
-  <a href="home.component.html">Login</a>
+    <input id="menu-toogle" type="checkbox">
+    <label class="menu-button-container" for="menu-toogle">
+        <div class="menu-button"></div>
+    </label>  
+    <a routerLink="/home">Home</a>
+    <a routerLink="/mainpage/about">About us</a> 
+    <a routerLink="home.component.html">Rooms</a>
+    <a routerLink="home.component.html">Contact</a>
+    <a routerLink="home.component.html">Login</a>
 </nav>
 
 <router-outlet></router-outlet>
@@ -19,9 +23,9 @@
    <div class="footeritems">
     <a routerLink="/home">home</a>
     <a routerLink="/mainpage/about">about us</a> 
-    <a href="home.component.html">rooms</a>
-    <a href="home.component.html">contact</a>
-    <a href="home.component.html">login</a>
+    <a routerLink="home.component.html">rooms</a>
+    <a routerLink="home.component.html">contact</a>
+    <a routerLink="home.component.html">login</a>
    </div>
 
    <div class="footeritems">
