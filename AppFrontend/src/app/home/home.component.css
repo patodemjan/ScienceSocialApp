@@ -18,17 +18,17 @@ animation: myAnim 2s ease 0s 1 normal forwards;
 .video-container {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100vh; /* vyplní celú výšku monitora */
   overflow: hidden;
 }
 
-#background-video {
+.video-container video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* 👈 prispôsobí video veľkosti monitora */
   z-index: -1;
 }
 
