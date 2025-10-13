@@ -15,7 +15,7 @@
   animation: myAnim 2s ease 0s 1 normal forwards;
   z-index: 1;
 }
-
+ 
 .video-container {
   position: relative;
   width: 100%;

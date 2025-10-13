@@ -168,7 +168,6 @@ nav {
     height: auto;
   }
 
-  /* samotné odkazy sa štandardne skryjú */
   nav a {
     display: none;
     width: 100%;
@@ -178,13 +177,11 @@ nav {
     border-top: 1px solid #555;
   }
 
-  /* checkbox: keď je zapnutý, odkazy sa ukážu */
-  #menu-toogle:checked ~ a {
+#menu-toogle:checked ~ a {
     display: block;
   }
 
-  /* hamburger ikona */
-  .menu-button-container {
+.menu-button-container {
     display: block;
     cursor: pointer;
     width: 30px;
@@ -193,9 +190,9 @@ nav {
     margin: 10px;
   }
 
-  .menu-button,
-  .menu-button::before,
-  .menu-button::after {
+.menu-button,
+.menu-button::before,
+.menu-button::after {
     content: '';
     background-color: antiquewhite;
     position: absolute;
@@ -205,16 +202,16 @@ nav {
     transition: 0.3s;
   }
 
-  .menu-button {
+.menu-button {
     top: 50%;
     transform: translateY(-50%);
   }
 
-  .menu-button::before {
+.menu-button::before {
     top: -8px;
   }
 
-  .menu-button::after {
+.menu-button::after {
     top: 8px;
   }
 
