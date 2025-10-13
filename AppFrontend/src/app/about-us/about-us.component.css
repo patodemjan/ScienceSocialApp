@@ -76,3 +76,17 @@
 		transform: scale(1);
 	}
 }
+
+@media (max-width: 768px) {
+
+
+.text ul{
+    font-size: 20px;
+    animation: myAnim 2s ease 0s 1 normal forwards;
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+    list-style: none;
+}
+
+}
