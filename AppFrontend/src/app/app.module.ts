@@ -9,13 +9,15 @@ import { HomeComponent } from './home/home.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { FormsModule } from '@angular/forms';
+import { CreateProfileComponent } from './create-profile/create-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MainPageComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    CreateProfileComponent
   ],
   imports: [
     BrowserModule,
