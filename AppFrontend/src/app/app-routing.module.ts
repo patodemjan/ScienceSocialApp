@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { CreateProfileComponent } from './create-profile/create-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'about', component: AboutUsComponent }
     ]
   },
+    { path: 'create-profile', component: CreateProfileComponent }, // ✅ pridaj sem
   { path: '**', redirectTo: '' }
 ];
 
