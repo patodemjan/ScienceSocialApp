@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    RouterModule  // ✅ toto tu musí byť!
+    RouterModule,  // ✅ toto tu musí byť!
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })
