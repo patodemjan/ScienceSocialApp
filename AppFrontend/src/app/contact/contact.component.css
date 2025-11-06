@@ -10,18 +10,20 @@
 
 label, input, textarea{
     font-size: 20px;
-}
-
-form{
-    display: grid;
-    grid-template-columns: 50%;
-    gap: 2%;
-    margin-bottom: 10%;
+	margin-top: 5px;
 }
 
 textarea{
-    height: 10vh;
+	height: 10rem;
 }
+
+form{
+    display: flex;
+	flex-direction: column;
+    width: 50%;
+	
+}
+
 
 @keyframes myAnim {
 	0% {
@@ -99,4 +101,11 @@ textarea{
 
 .social-link:hover img {
   transform: scale(1.15);
+}
+
+#btnSubmit{
+	margin-top: 5%;
+	font-size: large;
+	width: 10rem;
+	
 }

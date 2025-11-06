@@ -1,43 +1,42 @@
 <div class="text">
-<h1>Social Media</h1>
-<div class="social-links">
-  <a href="https://www.linkedin.com/in/patrik-demjan-90602429b/" target="_blank" rel="noopener noreferrer" class="social-link">
-    
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn ikonka">
-    LinkedIn: https://www.linkedin.com/in/patrik-demjan-90602429b/  
-</a>
-  <a href="https://github.com/patodemjan" target="_blank" rel="noopener noreferrer" class="social-link"> 
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub ikonka">
-    GitHub: https://github.com/patodemjan
-</a>
-
-
-
-  <a href="mailto:patodemjan@gmail.com" class="social-link">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/maildotcom.svg" alt="E-mail ikonka">
-    E-mail: patodemjan&#64;gmail.com  
-</a>
-
+  <h1>Social Media</h1>
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/patrik-demjan-90602429b/" target="_blank" rel="noopener noreferrer" class="social-link">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn ikonka">
+      LinkedIn: https://www.linkedin.com/in/patrik-demjan-90602429b/  
+    </a>
+    <a href="https://github.com/patodemjan" target="_blank" rel="noopener noreferrer" class="social-link"> 
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub ikonka">
+      GitHub: https://github.com/patodemjan
+    </a>
+    <a href="mailto:patodemjan@gmail.com" class="social-link">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/maildotcom.svg" alt="E-mail ikonka">
+      E-mail: patodemjan&#64;gmail.com  
+    </a>
     <a href="https://patodemjan.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" class="social-link">
-<img src="https://cdn.jsdelivr.net/gh/feathericons/feather/icons/globe.svg" alt="Globus ikonka">
-Personal website: https://patodemjan.github.io/Portfolio/
-</a>
-</div>
-</div>
-<hr>
-<div class="text">
-<h1>Contact form</h1>
-<form>
-    <label for="fname">First name: </label>
-    <input type="text" placeholder="enter your first name" alt="fname" form="fname" id="fname"><br><br>
-    <label for="lname">Last name: </label>
-    <input type="text" alt="lname" placeholder="enter your last name" form="lname" id="lname"><br><br>
-    <label for="email">Email: </label>
-    <input type="text" alt="fname" form="fname" id="email" placeholder="yourmail@youremail.com"><br>
-    <textarea name="textarea" id="textarea" placeholder="enter here your text..."></textarea>
-    <span>
-        <button type="submit">Submit</button>
-    </span>    
-</form>
+      <img src="https://cdn.jsdelivr.net/gh/feathericons/feather/icons/globe.svg" alt="Globus ikonka">
+      Personal website: https://patodemjan.github.io/Portfolio/
+    </a>
+  </div>
 </div>
 
+<hr>
+
+<div class="text">
+  <h1>Contact form</h1>
+  <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+    <label for="fname">First name: </label>
+    <input type="text" id="fname" placeholder="Enter your first name" [(ngModel)]="form.fname" name="fname" required><br><br>
+
+    <label for="lname">Last name: </label>
+    <input type="text" id="lname" placeholder="Enter your last name" [(ngModel)]="form.lname" name="lname" required><br><br>
+
+    <label for="email">Email: </label>
+    <input type="email" id="email" placeholder="yourmail@youremail.com" [(ngModel)]="form.email" name="email" required><br><br>
+
+    <label for="textarea">Message: </label>
+    <textarea id="textarea" placeholder="Enter your message..." [(ngModel)]="form.textarea" name="textarea" required></textarea><br><br>
+
+    <button type="submit" id="btnSubmit">Submit</button>
+  </form>
+</div>
