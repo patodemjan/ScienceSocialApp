@@ -10,6 +10,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { FormsModule } from '@angular/forms';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
     HomeComponent,
     MainPageComponent,
     AboutUsComponent,
-    CreateProfileComponent
+    CreateProfileComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
