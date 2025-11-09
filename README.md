@@ -36,4 +36,6 @@ Only the project owner can approve code changes or updates
 
 🚀 Usage
 
+![Login](docs/images/login.webp)
+
 You can try the app online: 🌐 [Science Social App](https://sciencesocialapp-1.onrender.com/)
