@@ -1,12 +1,18 @@
 package com.example.AppBackend.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.AppBackend.entity.User;
 import com.example.AppBackend.repository.UserRepository;
+@RestController
+@RequestMapping("/api/users")
+@CrossOrigin(origins = { "http://localhost:4200", "https://sciencesocialapp-1.onrender.com" })
 
 public class UserController {
 	
