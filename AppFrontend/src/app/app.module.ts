@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
+import { RoomsComponent } from './rooms/rooms.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from './login/login.component';
     AboutUsComponent,
     CreateProfileComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    RoomsComponent
   ],
   imports: [
     BrowserModule,

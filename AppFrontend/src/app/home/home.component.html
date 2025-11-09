@@ -15,19 +15,3 @@
   </div>
 </div>
 
-<script>
-  (function(){
-    const v = document.querySelector('.video-container video');
-    if (!v) return;
-    // enable inline playback on iOS/Android webviews
-    v.setAttribute('playsinline', '');
-    v.setAttribute('webkit-playsinline', '');
-    v.playsInline = true;
-    // prevent touches from pausing/bringing video to foreground
-    v.style.pointerEvents = 'none';
-    // try to auto-resume if it ever pauses
-    v.addEventListener('pause', () => {
-      try { v.play(); } catch(e) {}
-    }, { passive: true });
-  })();
-</script>
