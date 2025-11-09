@@ -2,6 +2,8 @@
 
 Science Social App ist eine Social-Media-Plattform für wissenschaftliche Zwecke. Benutzer können chatten 💬, Videos 🎥, Bilder 🖼️ und Textbeiträge 📝 teilen, um wissenschaftliche Themen zu diskutieren und zusammenzuarbeiten.
 
+![Mainpage](docs/images/aboutUs.webp)
+
 🌟 Funktionen
 
 🔑 Benutzerregistrierung und Anmeldung
@@ -33,5 +35,7 @@ Nur der Projektinhaber kann Änderungen am Code genehmigen
 ☁️ Deployment: Render
 
 🚀 Nutzung
+
+![Login](docs/images/loginPage.webp)
 
 Du kannst die App online testen: 🌐 [Science Social App](https://sciencesocialapp-1.onrender.com/)
