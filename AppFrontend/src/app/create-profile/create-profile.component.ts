@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../../environments/environment.prod';
 
 @Component({
   selector: 'app-create-profile',
@@ -29,7 +30,7 @@ export class CreateProfileComponent {
 
     const newUser = { username: this.username, password: this.password };
 
-    this.http.post('http://localhost:8080/api/users/register', newUser).subscribe({
+    this.http.post(`${environment.apiUrl}/register`, newUser).subscribe({
       next: (response) => {
         console.log('User created:', response);
         alert('Profile created successfully!');
