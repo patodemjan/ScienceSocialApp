@@ -5,6 +5,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
 import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
     children: [
       { path: '', component: AboutUsComponent },
       { path: 'about', component: AboutUsComponent },
-      { path: 'contact', component: ContactComponent }
+      { path: 'contact', component: ContactComponent },
+      { path: 'login', component: LoginComponent },      
 
     ]
   },

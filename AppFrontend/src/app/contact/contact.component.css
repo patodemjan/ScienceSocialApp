@@ -24,6 +24,46 @@ form{
 	
 }
 
+.social-links {
+  display: flex;
+  flex-direction: column; /* odkazy pod sebou */
+  gap: 8px;
+  margin-top: 15px;
+  font-size: 20px;
+
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.social-link img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+/* farby značiek pri hoveri */
+.social-link:hover {
+  color: #0A66C2; /* LinkedIn modrá */
+}
+
+.social-link:hover img {
+  transform: scale(1.15);
+}
+
+#btnSubmit{
+	margin-top: 5%;
+	font-size: large;
+	width: 10rem;
+	
+}
 
 @keyframes myAnim {
 	0% {
@@ -69,43 +109,18 @@ form{
 	}
 }
 
-.social-links {
-  display: flex;
-  flex-direction: column; /* odkazy pod sebou */
-  gap: 8px;
-  margin-top: 15px;
-  font-size: 20px;
-
-}
-
-.social-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  text-decoration: none;
-  font-weight: 500;
-  color: #333;
-  transition: color 0.2s ease;
-}
-
-.social-link img {
-  width: 20px;
-  height: 20px;
-  transition: transform 0.2s ease;
-}
-
-/* farby značiek pri hoveri */
-.social-link:hover {
-  color: #0A66C2; /* LinkedIn modrá */
-}
-
-.social-link:hover img {
-  transform: scale(1.15);
+@media (max-width: 768px)  {
+	form{
+    display: flex;
+	flex-direction: column;
+    width: 100%;
+	
 }
 
 #btnSubmit{
 	margin-top: 5%;
 	font-size: large;
-	width: 10rem;
+	align-self: center;
 	
+}
 }
