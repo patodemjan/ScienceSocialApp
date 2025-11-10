@@ -26,7 +26,7 @@ form{
 
 .social-links {
   display: flex;
-  flex-direction: column; /* odkazy pod sebou */
+  flex-direction: column; 
   gap: 8px;
   margin-top: 15px;
   font-size: 20px;
@@ -49,9 +49,8 @@ form{
   transition: transform 0.2s ease;
 }
 
-/* farby značiek pri hoveri */
 .social-link:hover {
-  color: #0A66C2; /* LinkedIn modrá */
+  color: #0A66C2; 
 }
 
 .social-link:hover img {
@@ -115,12 +114,14 @@ form{
 	flex-direction: column;
     width: 100%;
 	
+	
 }
 
 #btnSubmit{
 	margin-top: 5%;
 	font-size: large;
 	align-self: center;
-	
+	background-color: #333;
+	color: white;
 }
 }
