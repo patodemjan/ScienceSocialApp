@@ -132,7 +132,7 @@ footer a {
 
 @media (max-width: 768px) {
     header {
-    background-image: url("/assets/titlePic.jpg");
+    background-image: url("/assets/titlePic.webp");
     max-width: 100vw;
     height: 35vh;
     text-align: center;
