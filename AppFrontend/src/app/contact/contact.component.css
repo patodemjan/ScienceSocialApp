@@ -123,5 +123,14 @@ form{
 	align-self: center;
 	background-color: #333;
 	color: white;
+	border: none;
+	border-radius: 999px;
+	padding: 0.9rem 1.4rem;
+	min-width: 10rem;
+	font-size: 1.05rem;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+	touch-action: manipulation;
+	cursor: pointer;
+	transition: transform 0.08s ease, box-shadow 0.12s ease;
 }
 }
