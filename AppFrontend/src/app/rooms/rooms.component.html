@@ -40,7 +40,6 @@
         *ngFor="let fav of favorites"
         (click)="openRoom(fav._id)"
       >
-        <img [src]="fav.imageUrl" [alt]="fav.name" />
         <p>{{ fav.name }}</p>
       </div>
     </div>
