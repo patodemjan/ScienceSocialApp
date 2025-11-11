@@ -6,6 +6,7 @@
   color: #222;
 }
 
+/* HLAVNÝ KONTEJNER */
 .rooms-table {
   display: flex;
   justify-content: center;
@@ -18,15 +19,34 @@
   margin-bottom: 5%;
   margin-left: 10%;
   margin-right: 10%;
+  height: 50vh; /* fixná výška pre scroll */
 }
 
-/* ľavý stĺpec */
+/* ĽAVÝ STĹPEC – miestnosti */
 .rooms-grid {
   flex: 2;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
   padding: 10px;
+  overflow-y: auto; /* umožní vertikálne scrollovanie */
+  max-height: 100%;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #aaa transparent;
+  padding-bottom: 40px; /* 🔥 pridané aby bol viditeľný posledný obrázok */
+}
+
+/* scroll pre Chrome/Edge */
+.rooms-grid::-webkit-scrollbar {
+  width: 8px;
+}
+.rooms-grid::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 6px;
+}
+.rooms-grid::-webkit-scrollbar-thumb:hover {
+  background: #999;
 }
 
 .room-card {
@@ -34,13 +54,13 @@
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
 }
 
 .room-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
 .room-header {
@@ -56,24 +76,49 @@
   width: 100%;
   height: 150px;
   object-fit: cover;
+  transition: transform 0.3s ease;
+  display: block; /* 🔥 zabráni useknutiu spodného okraja */
 }
 
-/* pravý stĺpec */
+.room-card:hover img {
+  transform: scale(1.05);
+}
+
+/* PRAVÝ STĹPEC */
 .sidebar {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 15px;
+  overflow-y: auto; /* scroll */
+  max-height: 100%;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #aaa transparent;
+  padding-bottom: 40px; /* 🔥 pridané pre viditeľnosť spodného obsahu */
 }
 
-/* deliaca čiara */
+/* scroll pre Chrome/Edge */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* DELIACA ČIARA */
 .divider {
   width: 2px;
   background: #ccc;
   margin: 0 20px;
 }
 
+/* CREATE ROOM sekcia */
 .create-room-section {
   margin-bottom: 30px;
 }
@@ -99,6 +144,7 @@
   cursor: not-allowed;
 }
 
+/* FAVORITE ROOMS */
 .favorites-section {
   width: 100%;
   text-align: center;
@@ -114,7 +160,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background:  rgb(36, 34, 34);
+  background: rgb(36, 34, 34);
   border-radius: 88px;
   padding: 8px;
   margin: 5px 0;
@@ -141,11 +187,12 @@
   margin-top: 10px;
 }
 
-/* responzívny dizajn */
+/* MOBILNÁ VERZIA */
 @media (max-width: 768px) {
   .rooms-table {
     flex-direction: column;
     align-items: center;
+    height: auto;
   }
 
   .divider {
@@ -154,5 +201,10 @@
 
   .sidebar {
     margin-top: 20px;
+  }
+
+  .rooms-grid {
+    grid-template-columns: 1fr;
+    padding-bottom: 30px;
   }
 }

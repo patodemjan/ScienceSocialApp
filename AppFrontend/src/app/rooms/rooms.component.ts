@@ -32,13 +32,19 @@ export class RoomsComponent implements OnInit {
       { _id: '3', name: 'Ecology', imageUrl: 'assets/ecology.webp' },
       { _id: '4', name: 'Physics', imageUrl: 'assets/physics.webp' },
       { _id: '5', name: 'Computer science', imageUrl: 'assets/computerscience.webp' },
-      { _id: '6', name: 'History', imageUrl: 'assets/history.webp' }
+      { _id: '6', name: 'History', imageUrl: 'assets/history.webp' },
+      { _id: '7', name: 'Astronomy', imageUrl: 'assets/astronomy.webp' },
+      { _id: '8', name: 'Chemistry', imageUrl: 'assets/chemistry.webp' },
     ];
 
     // Mock favorites
     this.favorites = [
       { _id: '2', name: 'Neuroscience', imageUrl: 'https://via.placeholder.com/60x60?text=Neuro' },
-      { _id: '5', name: 'Machine Learning', imageUrl: 'https://via.placeholder.com/60x60?text=AI' }
+      { _id: '5', name: 'Machine Learning', imageUrl: 'https://via.placeholder.com/60x60?text=AI' },
+      { _id: '1', name: 'Sport', imageUrl: 'https://via.placeholder.com/60x60?text=AI' },
+      { _id: '6', name: 'History', imageUrl: 'https://via.placeholder.com/60x60?text=AI' },
+
+
     ];
   }
 
