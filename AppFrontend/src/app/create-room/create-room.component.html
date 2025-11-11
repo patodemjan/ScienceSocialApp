@@ -1,0 +1,11 @@
+<h2>Create New Room</h2>
+
+<form (ngSubmit)="createRoom()" enctype="multipart/form-data">
+  <label>Room name:</label>
+  <input type="text" #roomNameInput name="roomName" required (input)="roomName = roomNameInput.value">
+
+  <label>Background image:</label>
+  <input type="file" (change)="onFileSelected($event)" accept="image/*" required>
+
+  <button type="submit">Create Room</button>
+</form>

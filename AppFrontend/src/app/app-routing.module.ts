@@ -7,9 +7,14 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { RoomsComponent } from './rooms/rooms.component';
+import { CreateRoomComponent } from './create-room/create-room.component';
+import { RoomDetailComponent } from './room-detail/room-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'rooms', component: RoomsComponent },
+  { path: 'create-room', component: CreateRoomComponent },
+  { path: 'rooms/:id', component: RoomDetailComponent },
   {
     path: 'mainpage',
     component: MainPageComponent,
@@ -17,11 +22,11 @@ const routes: Routes = [
       { path: '', component: AboutUsComponent },
       { path: 'about', component: AboutUsComponent },
       { path: 'contact', component: ContactComponent },
-      { path: 'login', component: LoginComponent },      
-      { path: 'rooms', component: RoomsComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'rooms', component: RoomsComponent }
     ]
   },
-    { path: 'create-profile', component: CreateProfileComponent }, // ✅ pridaj sem
+  { path: 'create-profile', component: CreateProfileComponent },
   { path: '**', redirectTo: '' }
 ];
 

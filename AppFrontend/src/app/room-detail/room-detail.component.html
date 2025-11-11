@@ -1,0 +1,20 @@
+<div *ngIf="loading">
+  <p>Načítavam miestnosť...</p>
+</div>
+
+<div *ngIf="!loading && room" class="room-detail">
+  <h2>{{ room?.name }}</h2>
+
+  <img *ngIf="room?.imageUrl" [src]="room.imageUrl" [alt]="room?.name" class="room-image">
+
+  <p *ngIf="room?.description">{{ room.description }}</p>
+
+  <h3>Členovia</h3>
+  <ul>
+    <li *ngFor="let member of room?.members">{{ member }}</li>
+  </ul>
+</div>
+
+<div *ngIf="!loading && !room">
+  <p>Miestnosť sa nenašla.</p>
+</div>
