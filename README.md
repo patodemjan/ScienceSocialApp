@@ -24,6 +24,11 @@ All users can browse topics and posts offline
 
 Only the project owner can approve code changes or updates
 
+### 🌐 Responsive Design  
+This project is fully responsive — works perfectly on mobile 📱, tablet 💻, and desktop 🖥️.
+
+![Mainpage](docs/images/phoneview.webp)
+
 💻 Technologies & Languages
 
 ⚛️ Frontend: Angular, HTML5, CSS3, Typescript
