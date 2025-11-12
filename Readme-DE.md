@@ -24,6 +24,11 @@ Alle Benutzer können Themen und Beiträge offline durchsuchen
 
 Nur der Projektinhaber kann Änderungen am Code genehmigen
 
+### 🌐 Responsives Design  
+Dieses Projekt ist vollständig responsiv – funktioniert perfekt auf Handy 📱, Tablet 💻 und Desktop 🖥️.
+
+![rooms](docs/images/mobileview.webp)
+
 💻 Technologien & Sprachen
 
 ⚛️ Frontend: Angular, HTML5, CSS3, Typescript
