@@ -187,6 +187,54 @@
   margin-top: 10px;
 }
 
+.rooms-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5% 10% 3% 10%;
+}
+
+/* Search bar + buttons v jednej rovine */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 200px;
+  font-size: 1.1rem;
+
+}
+
+.search-btn,
+.view-all-btn {
+  width: 180px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(36, 34, 34);
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-btn:hover,
+.view-all-btn:hover {
+  background-color: rgb(80, 78, 78);
+}
+
+/* Nadpis */
+.title {
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+}
+
 /* MOBILNÁ VERZIA */
 @media (max-width: 768px) {
   .rooms-table {

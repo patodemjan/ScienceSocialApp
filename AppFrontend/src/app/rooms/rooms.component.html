@@ -1,11 +1,24 @@
-<h1 class="title">Rooms</h1>
+<div class="rooms-header">
+  <h1 class="title">Rooms</h1>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search room..."
+      [(ngModel)]="searchTerm"
+      class="search-input"
+    />
+    <button (click)="searchRooms()" class="search-btn">Search Room</button>
+    <button (click)="viewAllRooms()" class="view-all-btn">View All Rooms</button>
+  </div>
+</div>
 
 <div class="rooms-table">
   <!-- ĽAVÝ STĹPEC – miestnosti -->
   <div class="rooms-grid">
     <div
       class="room-card"
-      *ngFor="let room of rooms"
+      *ngFor="let room of filteredRooms"
       (click)="openRoom(room._id)"
     >
       <div class="room-header">{{ room.name }}</div>
