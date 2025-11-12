@@ -2,7 +2,7 @@
 
 Science Social App ist eine Social-Media-Plattform für wissenschaftliche Zwecke. Benutzer können chatten 💬, Videos 🎥, Bilder 🖼️ und Textbeiträge 📝 teilen, um wissenschaftliche Themen zu diskutieren und zusammenzuarbeiten.
 
-![Mainpage](docs/images/aboutUs.webp)
+![Mainpage](docs/images/rooms.webp)
 
 🌟 Funktionen
 
