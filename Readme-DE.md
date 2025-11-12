@@ -27,7 +27,7 @@ Nur der Projektinhaber kann Änderungen am Code genehmigen
 ### 🌐 Responsives Design  
 Dieses Projekt ist vollständig responsiv – funktioniert perfekt auf Handy 📱, Tablet 💻 und Desktop 🖥️.
 
-![rooms](docs/images/mobileview.webp)
+![rooms](docs/images/phoneview.webp)
 
 💻 Technologien & Sprachen
 
