@@ -22,4 +22,5 @@ public class Room {
 
     private String name;
     private String imageUrl;
+    private String description;
 }

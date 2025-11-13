@@ -58,3 +58,23 @@
     </div>
   </div>
 </div>
+
+<div class="modal-overlay" *ngIf="showCreateRoomModal">
+  <div class="modal">
+    <h2>Create New Room</h2>
+
+    <label>Room Name:</label>
+    <input type="text" [(ngModel)]="newRoomName" placeholder="Enter room name" />
+
+    <label>Description:</label>
+    <textarea [(ngModel)]="newRoomDescription" placeholder="Short description"></textarea>
+
+    <label>Room Image (.webp only):</label>
+    <input type="file" accept=".webp" (change)="onImageSelected($event)" />
+
+    <div class="modal-buttons">
+      <button (click)="createRoom()">Create</button>
+      <button class="cancel-btn" (click)="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>

@@ -18,6 +18,12 @@ export class RoomsComponent implements OnInit {
   isLoggedIn = false;
   searchTerm: string = '';
 
+  // 🔥 Modal premenné
+  showCreateRoomModal = false;
+  newRoomName = '';
+  newRoomDescription = '';
+  selectedImageFile: File | null = null;
+
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -27,7 +33,7 @@ export class RoomsComponent implements OnInit {
   ngOnInit() {
     this.isLoggedIn = this.authService.isLoggedIn();
 
-    // 1️⃣ Mock rooms
+    // Mock rooms
     this.rooms = [
       { _id: '1', name: 'Sport', imageUrl: 'assets/sports.webp' },
       { _id: '2', name: 'Anatomy', imageUrl: 'assets/anatomy.webp' },
@@ -40,7 +46,7 @@ export class RoomsComponent implements OnInit {
     ];
     this.filteredRooms = [...this.rooms];
 
-    // 2️⃣ Mock favorites
+    // Mock favorites
     this.favorites = [
       { _id: '2', name: 'Neuroscience', imageUrl: 'https://via.placeholder.com/60x60?text=Neuro' },
       { _id: '5', name: 'Machine Learning', imageUrl: 'https://via.placeholder.com/60x60?text=AI' },
@@ -48,7 +54,7 @@ export class RoomsComponent implements OnInit {
       { _id: '6', name: 'History', imageUrl: 'https://via.placeholder.com/60x60?text=AI' },
     ];
 
-    // 3️⃣ Pokus o načítanie reálnych dát
+    // Pokus o backend
     this.roomService.getAllRooms().subscribe({
       next: (data) => {
         if (data && data.length > 0) {
@@ -57,20 +63,16 @@ export class RoomsComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.warn('Nepodarilo sa načítať dáta z backendu, zobrazujú sa mock dáta.', err);
+        console.warn('Backend nedostupný → zobrazujú sa mock dáta.', err);
       },
     });
   }
 
   searchRooms() {
     const term = this.searchTerm.toLowerCase().trim();
-    if (term) {
-      this.filteredRooms = this.rooms.filter((room) =>
-        room.name.toLowerCase().includes(term)
-      );
-    } else {
-      this.filteredRooms = [...this.rooms];
-    }
+    this.filteredRooms = term
+      ? this.rooms.filter((room) => room.name.toLowerCase().includes(term))
+      : [...this.rooms];
   }
 
   viewAllRooms() {
@@ -84,7 +86,56 @@ export class RoomsComponent implements OnInit {
 
   goToCreateRoom() {
     if (this.isLoggedIn) {
-      this.router.navigate(['/create-room']);
+      this.showCreateRoomModal = true;
     }
+  }
+
+  closeModal() {
+    this.showCreateRoomModal = false;
+    this.newRoomName = '';
+    this.newRoomDescription = '';
+    this.selectedImageFile = null;
+  }
+
+  onImageSelected(event: any) {
+    const file: File = event.target.files[0];
+
+    if (!file) return;
+
+    if (!file.name.endsWith('.webp')) {
+      alert('Only .webp images are allowed!');
+      return;
+    }
+
+    this.selectedImageFile = file;
+  }
+
+  createRoom() {
+    if (!this.newRoomName.trim()) {
+      alert('Room name is required!');
+      return;
+    }
+
+    if (!this.selectedImageFile) {
+      alert('Please select a .webp image!');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const newRoom: Room = {
+        _id: Math.random().toString(36).substring(2),
+        name: this.newRoomName,
+        description: this.newRoomDescription,
+        imageUrl: reader.result as string
+      };
+
+      this.rooms.push(newRoom);
+      this.filteredRooms = [...this.rooms];
+
+      this.closeModal();
+    };
+
+    reader.readAsDataURL(this.selectedImageFile);
   }
 }
