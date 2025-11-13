@@ -6,7 +6,7 @@ export interface Room {
   _id: string;
   name: string;
   imageUrl: string;
-  description?: string;
+  description?: string; // optional popis
 }
 
 @Injectable({ providedIn: 'root' })

@@ -18,7 +18,7 @@ export class RoomsComponent implements OnInit {
   isLoggedIn = false;
   searchTerm: string = '';
 
-  // 🔥 Modal premenné
+  // Modal variables
   showCreateRoomModal = false;
   newRoomName = '';
   newRoomDescription = '';
@@ -99,11 +99,13 @@ export class RoomsComponent implements OnInit {
 
   onImageSelected(event: any) {
     const file: File = event.target.files[0];
-
     if (!file) return;
 
-    if (!file.name.endsWith('.webp')) {
-      alert('Only .webp images are allowed!');
+    const allowedExtensions = ['.webp', '.jpg', '.jpeg'];
+    const fileExtension = file.name.slice(file.name.lastIndexOf('.')).toLowerCase();
+
+    if (!allowedExtensions.includes(fileExtension)) {
+      alert('Only .webp, .jpg, and .jpeg images are allowed!');
       return;
     }
 
@@ -117,7 +119,7 @@ export class RoomsComponent implements OnInit {
     }
 
     if (!this.selectedImageFile) {
-      alert('Please select a .webp image!');
+      alert('Please select an image (.webp, .jpg, .jpeg)!');
       return;
     }
 
