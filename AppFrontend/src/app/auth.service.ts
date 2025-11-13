@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +7,14 @@ export class AuthService {
   constructor() {}
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('user'); // kontroluje user namiesto tokenu
   }
 
-  login(token: string) {
-    localStorage.setItem('token', token);
+  login(user: any) {
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 }

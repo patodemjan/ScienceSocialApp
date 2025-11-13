@@ -25,21 +25,19 @@ export class ContactComponent {
   };
 
   onSubmit(formDirective: NgForm) {
-    // Odoslanie emailu cez EmailJS
     emailjs.send(
-      'service_h7qvxjl',       // Tvoj service ID
-      'template_b1wwf9g',      // Tvoj template ID
+      'service_h7qvxjl',       
+      'template_b1wwf9g',      
       {
         from_name: `${this.form.fname} ${this.form.lname}`,
         from_email: this.form.email,
         message: this.form.textarea
       },
-      'TZCa9PONEY57GrIQT'      // Tvoj public key
+      'TZCa9PONEY57GrIQT'      
     )
     .then(() => {
       console.log('Email sent!');
       alert('Email sent!');
-      // Vyčistenie formulára po odoslaní
       this.form = { fname: '', lname: '', email: '', textarea: '' };
       formDirective.resetForm();
     })

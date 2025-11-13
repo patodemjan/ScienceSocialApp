@@ -1,46 +1,50 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { RoomService } from '../room.service';
-import { CommonModule } from '@angular/common'; // <-- import CommonModule
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment.prod';
 
 interface Room {
-  _id: string;
   name: string;
-  description?: string;
-  members?: string[];
   imageUrl?: string;
+  description?: string;
+  members: string[];
 }
 
 @Component({
   selector: 'app-room-detail',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './room-detail.component.html',
-  styleUrls: ['./room-detail.component.css'],
-  imports: [CommonModule]       // <-- pridaj sem CommonModule pre *ngIf, *ngFor
+  styleUrls: ['./room-detail.component.css']
 })
 export class RoomDetailComponent implements OnInit {
-  roomId!: string;
-  room?: Room;
+  room: Room | null = null;
   loading = true;
 
-  constructor(private route: ActivatedRoute, private roomService: RoomService) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
-  ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (!id) {
-      console.error('Room id not provided in route.');
+  ngOnInit() {
+    const roomId = this.route.snapshot.paramMap.get('id');
+    if (roomId) {
+      this.fetchRoom(roomId);
+    } else {
       this.loading = false;
-      return;
     }
-    this.roomId = id;
+  }
 
-    // MOCK DATA pre testovanie
-    this.room = {
-      _id: this.roomId,
-      name: 'Mock Room',
-      description: 'Toto je testovacia miestnosť',
-      members: ['Alice', 'Bob', 'Charlie'],
-      imageUrl: 'https://via.placeholder.com/150'
-    };
-    this.loading = false;
+  fetchRoom(id: string) {
+    this.loading = true;
+    this.http.get<Room>(`${environment.apiUrl}/rooms/${id}`).subscribe({
+      next: (data) => {
+        this.room = data;
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Error fetching room:', err);
+        this.room = null;
+        this.loading = false;
+      }
+    });
   }
 }

@@ -1,26 +1,17 @@
 .room-detail {
-  max-width: 800px;
-  margin: 2rem auto;
-  text-align: center;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 10px;
 }
 
-.room-image img {
+.room-image {
   width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-h1 {
-  margin-bottom: 1rem;
-  font-size: 2rem;
-}
-
-.discussion {
-  margin-top: 2rem;
-  text-align: left;
-  background-color: #f9f9f9;
-  padding: 1rem;
+  max-width: 400px;
   border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
 }

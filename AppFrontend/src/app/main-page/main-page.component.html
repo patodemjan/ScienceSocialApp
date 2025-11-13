@@ -4,15 +4,17 @@
 </header>
 
 <nav>
-    <input id="menu-toogle" type="checkbox">
-    <label class="menu-button-container" for="menu-toogle">
-        <div class="menu-button"></div>
-    </label>  
-    <a routerLink="/home">Home</a>
-    <a routerLink="/mainpage/about">About us</a> 
-    <a routerLink="/mainpage/rooms">Rooms</a>
-    <a routerLink="/mainpage/contact">Contact</a>
-    <a routerLink="/mainpage/login">Login</a>
+  <input id="menu-toogle" type="checkbox">
+  <label class="menu-button-container" for="menu-toogle">
+    <div class="menu-button"></div>
+  </label>  
+  <a routerLink="/home">Home</a>
+  <a routerLink="/mainpage/about">About us</a> 
+  <a routerLink="/mainpage/rooms">Rooms</a>
+  <a routerLink="/mainpage/contact">Contact</a>
+  <!--  Sign In / Sign Out -->
+  <a *ngIf="!isLoggedIn" routerLink="/mainpage/login">Sign In</a>
+  <a *ngIf="isLoggedIn" (click)="logout()" class="sign-out">Sign Out</a>
 </nav>
 
 <router-outlet></router-outlet>
@@ -21,12 +23,13 @@
    
 
    <div class="footeritems">
-    <a routerLink="/home">home</a>
-    <a routerLink="/mainpage/about">about us</a> 
-    <a routerLink="/mainpage/rooms">rooms</a>
-    <a routerLink="/mainpage/contact">contact</a>
-    <a routerLink="/mainpage/login">login</a>
-   </div>
+  <a routerLink="/home">home</a>
+  <a routerLink="/mainpage/about">about us</a> 
+  <a routerLink="/mainpage/rooms">rooms</a>
+  <a routerLink="/mainpage/contact">contact</a>
+  <a *ngIf="!isLoggedIn" routerLink="/mainpage/login">sign in</a>
+  <a *ngIf="isLoggedIn" (click)="logout()">sign out</a>
+</div>
 
    <div class="footeritems">
     <a (click)="navigateTo('help')">help</a>

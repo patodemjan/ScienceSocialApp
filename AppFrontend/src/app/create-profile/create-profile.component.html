@@ -1,5 +1,5 @@
 <div class="video-container">
-  <video loop muted playsInline webkit-playsinline autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true">
+  <video loop muted playsInline webkit-playsinline autoplay>
     <source src="assets/video/background.mp4" type="video/mp4">
   </video>
 
@@ -19,6 +19,12 @@
       <button (click)="navigateToHome()">Homepage</button>
       <button (click)="createProfile()">Create</button>
     </div>
+
+    <div *ngIf="errorMessage" class="error-message show">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="success-message show">
+      <div class="success-icon">✓</div>
+      <h3>Profile created!</h3>
+      <p>Redirecting to login...</p>
+    </div>
   </div>
 </div>
-
