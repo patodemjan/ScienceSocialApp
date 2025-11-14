@@ -39,7 +39,9 @@ export class CreateProfileComponent {
         console.log('User created:', response);
         this.successMessage = true;
         this.errorMessage = '';
-        setTimeout(() => this.router.navigate(['/']), 1500);
+
+        // 🔥 Presmerovanie na login
+        setTimeout(() => this.router.navigate(['/login']), 1500);
       },
       error: (err) => {
         console.error('Error creating profile:', err);
