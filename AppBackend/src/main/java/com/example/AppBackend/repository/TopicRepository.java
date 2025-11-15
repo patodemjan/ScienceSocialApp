@@ -1,0 +1,9 @@
+package com.example.AppBackend.repository;
+
+import com.example.AppBackend.entity.Topic;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface TopicRepository extends JpaRepository<Topic, Long> {
+    List<Topic> findByRoomId(Long roomId);
+}

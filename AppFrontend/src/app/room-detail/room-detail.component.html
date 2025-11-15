@@ -1,46 +1,102 @@
-<div *ngIf="loading">
-  <p>Načítavam miestnosť...</p>
+<header [style.backgroundImage]="'url(/assets/titlePic.webp)'">
+  <h1>{{ room?.name }}</h1>
+</header>
+
+<div class="buttons-top">
+  <button (click)="goToRooms()" class="buttons">Rooms</button>
+  <button (click)="signOut()" *ngIf="isLoggedIn" class="buttons">Sign Out</button>
 </div>
 
-<div *ngIf="!loading && room" class="room-detail">
-  <h2>{{ room.name }}</h2>
+<div class="tabs">
+  <button [class.active]="selectedTab==='chat'" (click)="selectTab('chat')">Chat</button>
+  <button [class.active]="selectedTab==='topic'" (click)="selectTab('topic')">Topic</button>
+  <button [class.active]="selectedTab==='list'" (click)="selectTab('list')">List of Topics</button>
+</div>
 
-  <img *ngIf="room.imageUrl" [src]="room.imageUrl" [alt]="room.name" class="room-image">
+<div class="tab-content">
 
-  <p *ngIf="room.description">{{ room.description }}</p>
-
-  <h3>Členovia</h3>
-  <ul>
-    <li *ngFor="let member of room.members || []">{{ member }}</li>
-  </ul>
-
-  <!-- Menu -->
-  <div class="tab-menu">
-    <button [class.active]="selectedTab==='chat'" (click)="selectTab('chat')">Chat</button>
-    <button [class.active]="selectedTab==='media'" (click)="selectTab('media')">Media</button>
-    <button [class.active]="selectedTab==='post'" (click)="selectTab('post')">Post</button>
-  </div>
-
-  <!-- Content -->
-  <div class="tab-content">
-    <ng-container *ngFor="let post of posts">
-      <div *ngIf="post.type === selectedTab" class="post-card">
-        <div class="post-header">
-          <strong>{{ post.authorUsername }}</strong> • <small>{{ post.createdAt | date:'short' }}</small>
-          <button *ngIf="canEdit(post)" class="delete-btn" (click)="deletePost(post)">❌</button>
-        </div>
+  <!-- CHAT -->
+  <div *ngIf="selectedTab==='chat'" id="chat">
+    <div class="chat-window">
+      <div *ngFor="let post of chatPosts" class="chat-post">
+        <span class="author">{{ post.authorUsername }}</span>
+        <span class="time">{{ post.createdAt | date:'short' }}</span>
         <p>{{ post.content }}</p>
       </div>
-    </ng-container>
+    </div>
+
+    <div class="chat-input">
+      <input [(ngModel)]="newChatMessage" [disabled]="!canChat()" placeholder="Type a message...">
+      <button (click)="sendChatMessage()" [disabled]="!canChat()">Send</button>
+    </div>
   </div>
 
-  <!-- Add post -->
-  <div *ngIf="user" class="add-post">
-    <textarea [(ngModel)]="newPostContent" placeholder="Napíš niečo..."></textarea>
-    <button (click)="addPost()">Pridať</button>
+  <!-- LIST OF TOPICS -->
+  <div *ngIf="selectedTab==='list'" id="topicList">
+    <div class="search-bar">
+      <input #searchInput placeholder="Search topic..." />
+      <button (click)="searchTopic(searchInput.value)">Search</button>
+      <button (click)="viewAllTopics()">View All Topics</button>
+    </div>
+    <ul>
+      <li *ngFor="let topic of displayedTopics" (click)="openTopic(topic)">
+        {{ topic.title }}
+      </li>
+    </ul>
   </div>
+
+  <!-- TOPIC DETAIL -->
+  <div *ngIf="selectedTab==='topic' && selectedTopic" id="topicv">
+    <h2>{{ selectedTopic.title }}</h2>
+
+    <div class="posts">
+      <div *ngFor="let post of selectedTopic.posts" class="post">
+        <p><strong>{{ post.authorUsername }}</strong> ({{ post.createdAt | date:'short' }}): {{ post.content }}</p>
+        <iframe *ngIf="post.link" width="200" height="120" [src]="post.link | safe" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="add-video">
+      <input #linkInput placeholder="Add video link"/>
+      <button (click)="addPostWithLink(selectedTopic, linkInput.value); linkInput.value=''">Add Video</button>
+    </div>
+  </div>
+
 </div>
 
-<div *ngIf="!loading && !room">
-  <p>Miestnosť sa nenašla.</p>
-</div>
+<footer class="footer">
+  <div class="footeritems">
+    <a routerLink="/home">home</a>
+    <a routerLink="/mainpage/about">about us</a> 
+    <a routerLink="/mainpage/rooms">rooms</a>
+    <a routerLink="/mainpage/contact">contact</a>
+    <a *ngIf="!isLoggedIn" routerLink="/mainpage/login">sign in</a>
+    <a *ngIf="isLoggedIn" (click)="signOut()">sign out</a>
+  </div>
+
+  <div class="footeritems">
+    <a (click)="navigateTo('help')">help</a>
+    <a (click)="navigateTo('faq')">faq</a>
+    <a (click)="navigateTo('cookies')">cookies</a>
+    <a (click)="navigateTo('impressum')">impressum</a>
+  </div>
+
+  <div class="footeritems">
+    <a href="https://www.linkedin.com/in/patrik-demjan-90602429b/" target="_blank">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    <a href="https://github.com/patodemjan/" target="_blank">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+    <a href="mailto:patodemjan@gmail.com">
+      <i class="fas fa-envelope"></i> Email
+    </a>
+    <a href="https://patodemjan.github.io/Portfolio/" target="_blank">
+      <i class="fas fa-briefcase"></i> Portfolio
+    </a>
+  </div>
+
+  <span id="allrights">
+    <p>© 2025 Patrik Demjan. All rights reserved.</p>
+  </span>
+</footer>

@@ -18,7 +18,6 @@ export class RoomsComponent implements OnInit {
   isLoggedIn = false;
   searchTerm: string = '';
 
-  // Modal variables
   showCreateRoomModal = false;
   newRoomName = '';
   newRoomDescription = '';
@@ -50,8 +49,8 @@ export class RoomsComponent implements OnInit {
     this.favorites = [
       { _id: '2', name: 'Neuroscience', imageUrl: 'https://via.placeholder.com/60x60?text=Neuro' },
       { _id: '5', name: 'Machine Learning', imageUrl: 'https://via.placeholder.com/60x60?text=AI' },
-      { _id: '1', name: 'Sport', imageUrl: 'https://via.placeholder.com/60x60?text=AI' },
-      { _id: '6', name: 'History', imageUrl: 'https://via.placeholder.com/60x60?text=AI' },
+      { _id: '1', name: 'Sport', imageUrl: 'https://via.placeholder.com/60x60?text=Sport' },
+      { _id: '6', name: 'History', imageUrl: 'https://via.placeholder.com/60x60?text=History' },
     ];
 
     // Pokus o backend

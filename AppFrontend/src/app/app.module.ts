@@ -18,6 +18,7 @@ import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { CreateRoomComponent } from './create-room/create-room.component';
 
 import { JwtInterceptor } from './auth/jwt.interceptor'; // ← import interceptor
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { JwtInterceptor } from './auth/jwt.interceptor'; // ← import intercept
     LoginComponent,
     RoomsComponent,
     RoomDetailComponent,
-    CreateRoomComponent
+    CreateRoomComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
