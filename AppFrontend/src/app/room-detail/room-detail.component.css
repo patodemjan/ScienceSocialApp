@@ -1,17 +1,90 @@
 .room-detail {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
-  background: #f8fafc;
-  border-radius: 10px;
 }
 
 .room-image {
   width: 100%;
-  max-width: 400px;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  object-fit: cover;
 }
 
-ul {
-  list-style-type: disc;
-  padding-left: 20px;
+.tab-menu {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.tab-menu button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: #f0f0f0;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px 6px 0 0;
+}
+
+.tab-menu button.active {
+  border-bottom: 2px solid #007bff;
+  background: #fff;
+}
+
+.tab-content {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  background: #fff;
+}
+
+.post-card {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: red;
+}
+
+.add-post {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-post textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: none;
+  min-height: 80px;
+  margin-bottom: 10px;
+}
+
+.add-post button {
+  align-self: flex-end;
+  padding: 8px 16px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-post button:hover {
+  background: #0056b3;
 }

@@ -2,7 +2,7 @@ package com.example.AppBackend.controller;
 
 import java.util.List;
 
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.AppBackend.entity.Room;
@@ -20,27 +20,34 @@ public class RoomController {
         this.roomRepository = roomRepository;
     }
 
+    
     @GetMapping
-    @PreAuthorize("isAuthenticated()")
     public List<Room> getAllRooms() {
         return roomRepository.findAll();
     }
 
-    @PostMapping
-    @PreAuthorize("isAuthenticated()")
-    public Room createRoom(@RequestBody Room room) {
-        return roomRepository.save(room);
-    }
-
-    @DeleteMapping("/{id}")
-    @PreAuthorize("isAuthenticated()")
-    public void deleteRoom(@PathVariable Long id) {
-        roomRepository.deleteById(id);
-    }
-
+    
     @GetMapping("/{id}")
-    @PreAuthorize("isAuthenticated()")
-    public Room getRoomById(@PathVariable Long id) {
-        return roomRepository.findById(id).orElseThrow();
+    public ResponseEntity<Room> getRoomById(@PathVariable Long id) {
+        return roomRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    // 
+    @PostMapping
+    public ResponseEntity<Room> createRoom(@RequestBody Room room) {
+        Room savedRoom = roomRepository.save(room);
+        return ResponseEntity.ok(savedRoom);
+    }
+
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteRoom(@PathVariable Long id) {
+        if (!roomRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        roomRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

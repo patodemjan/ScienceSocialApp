@@ -11,8 +11,34 @@
 
   <h3>Členovia</h3>
   <ul>
-    <li *ngFor="let member of room.members">{{ member }}</li>
+    <li *ngFor="let member of room.members || []">{{ member }}</li>
   </ul>
+
+  <!-- Menu -->
+  <div class="tab-menu">
+    <button [class.active]="selectedTab==='chat'" (click)="selectTab('chat')">Chat</button>
+    <button [class.active]="selectedTab==='media'" (click)="selectTab('media')">Media</button>
+    <button [class.active]="selectedTab==='post'" (click)="selectTab('post')">Post</button>
+  </div>
+
+  <!-- Content -->
+  <div class="tab-content">
+    <ng-container *ngFor="let post of posts">
+      <div *ngIf="post.type === selectedTab" class="post-card">
+        <div class="post-header">
+          <strong>{{ post.authorUsername }}</strong> • <small>{{ post.createdAt | date:'short' }}</small>
+          <button *ngIf="canEdit(post)" class="delete-btn" (click)="deletePost(post)">❌</button>
+        </div>
+        <p>{{ post.content }}</p>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Add post -->
+  <div *ngIf="user" class="add-post">
+    <textarea [(ngModel)]="newPostContent" placeholder="Napíš niečo..."></textarea>
+    <button (click)="addPost()">Pridať</button>
+  </div>
 </div>
 
 <div *ngIf="!loading && !room">

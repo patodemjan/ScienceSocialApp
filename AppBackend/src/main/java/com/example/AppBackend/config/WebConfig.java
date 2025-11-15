@@ -9,9 +9,12 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")                       // všetky endpointy
-                .allowedOrigins("http://localhost:4200",
-                		"https://sciencesocialapp-1.onrender.com") // Angular dev server
+        registry.addMapping("/**")
+                .allowedOrigins(
+                        "http://localhost:4200/api",
+                        "http://localhost:5173/api",
+                        "https://sciencesocialapp-1.onrender.com"
+                )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
