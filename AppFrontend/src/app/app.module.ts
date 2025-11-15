@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { CreateRoomComponent } from './create-room/create-room.component';
+
+import { JwtInterceptor } from './auth/jwt.interceptor'; // ← import interceptor
 
 @NgModule({
   declarations: [
@@ -37,6 +39,9 @@ import { CreateRoomComponent } from './create-room/create-room.component';
     RouterModule,
     FormsModule,
     CommonModule
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true } // ← registrácia
   ],
   bootstrap: [AppComponent]
 })

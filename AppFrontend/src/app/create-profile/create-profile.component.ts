@@ -22,7 +22,8 @@ export class CreateProfileComponent {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  navigateToHome() {
+  // 🔥 Funkcia, ktorá chýbala
+  public navigateToHome() {
     this.router.navigate(['/']);
   }
 
@@ -40,7 +41,7 @@ export class CreateProfileComponent {
         this.successMessage = true;
         this.errorMessage = '';
 
-        // 🔥 Presmerovanie na login
+        // Presmerovanie na login
         setTimeout(() => this.router.navigate(['/login']), 1500);
       },
       error: (err) => {

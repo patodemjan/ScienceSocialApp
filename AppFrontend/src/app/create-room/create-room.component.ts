@@ -18,6 +18,10 @@ export class CreateRoomComponent {
     this.selectedFile = input.files && input.files.length ? input.files[0] : null;
   }
 
+  public navigateToHome() {
+  this.router.navigate(['/']);
+  }
+
   createRoom() {
     if (!this.roomName || !this.selectedFile) return;
 

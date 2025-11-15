@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../environments/environment.prod';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,25 +18,20 @@ export class LoginComponent {
   password = '';
   errorMessage = '';
   successMessage = false;
-  isLoggedIn = false;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private authService: AuthService) {}
 
   login() {
     this.errorMessage = '';
     this.http.post<any>(`${environment.apiUrl}/users/login`, {
-  username: this.username,
-  password: this.password
+      username: this.username,
+      password: this.password
     }).subscribe({
-      next: (user) => {
-        if (user) {
+      next: (res) => {
+        if (res && res.token) {
+          this.authService.login(res.token);  // uloží token
           this.successMessage = true;
-          this.isLoggedIn = true;
-          localStorage.setItem('user', JSON.stringify(user));
-          setTimeout(() => {
-            this.successMessage = false;
-            this.router.navigate(['/mainpage/rooms']);
-          }, 1500);
+          setTimeout(() => this.router.navigate(['/mainpage/rooms']), 1500);
         } else {
           this.errorMessage = 'Invalid username or password';
         }
@@ -45,9 +41,5 @@ export class LoginComponent {
         this.errorMessage = 'Server error. Please try again later.';
       }
     });
-  }
-
-  canCreateRoom(): boolean {
-    return this.isLoggedIn || !!localStorage.getItem('user');
   }
 }

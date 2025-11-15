@@ -2,49 +2,45 @@ package com.example.AppBackend.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.AppBackend.entity.Room;
 import com.example.AppBackend.repository.RoomRepository;
+import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/rooms")
-
+@CrossOrigin(origins = "*")
 public class RoomController {
 
-	private final RoomRepository roomRepository;
+    private final RoomRepository roomRepository;
 
     public RoomController(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
     }
 
     @GetMapping
+    @PreAuthorize("isAuthenticated()")
     public List<Room> getAllRooms() {
         return roomRepository.findAll();
     }
 
     @PostMapping
+    @PreAuthorize("isAuthenticated()")
     public Room createRoom(@RequestBody Room room) {
         return roomRepository.save(room);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public void deleteRoom(@PathVariable Long id) {
         roomRepository.deleteById(id);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     public Room getRoomById(@PathVariable Long id) {
         return roomRepository.findById(id).orElseThrow();
     }
 }
-
-
