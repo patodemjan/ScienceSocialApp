@@ -52,8 +52,8 @@
     <h2>{{ selectedTopic.title }}</h2>
 
     <div class="chat-input">
-      <input class="topic-input" #postInput placeholder="Add comment with text, emoji, or link"/>
-      <button class="topic-button" (click)="addComment(selectedTopic, postInput.value); postInput.value=''">Add Comment</button>
+      <input class="topic-input" #postInput [disabled]="!isLoggedIn" placeholder="Add comment..." />
+      <button class="topic-button" (click)="addComment(selectedTopic, postInput.value); postInput.value=''" [disabled]="!isLoggedIn">Add Comment</button>
     </div>
 
     <div class="posts">

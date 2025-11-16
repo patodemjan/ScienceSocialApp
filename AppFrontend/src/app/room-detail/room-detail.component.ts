@@ -71,7 +71,7 @@ export class RoomDetailComponent implements OnInit {
   }
 
   addTopic() {
-    if (!this.newTopicTitle.trim()) return;
+    if (!this.newTopicTitle.trim() || !this.isLoggedIn) return;
     const newTopic: Topic = { id: Date.now().toString(), title: this.newTopicTitle, posts: [] };
     this.topics.push(newTopic);
     this.displayedTopics.push(newTopic);
@@ -80,12 +80,12 @@ export class RoomDetailComponent implements OnInit {
   }
 
   addComment(topic: Topic, content: string) {
-    if (!content.trim() || !this.user) return;
+    if (!content.trim() || !this.isLoggedIn) return;
     topic.posts.unshift({
       id: Date.now().toString(),
       content,
       type: 'post',
-      authorUsername: this.user.username,
+      authorUsername: this.user!.username,
       createdAt: new Date().toISOString()
     });
   }
@@ -111,12 +111,12 @@ export class RoomDetailComponent implements OnInit {
   }
 
   sendChatMessage() {
-    if (!this.newChatMessage.trim() || !this.user) return;
+    if (!this.newChatMessage.trim() || !this.isLoggedIn) return;
     const chatPost: Post = {
       id: Date.now().toString(),
       content: this.newChatMessage,
       type: 'chat',
-      authorUsername: this.user.username,
+      authorUsername: this.user!.username,
       createdAt: new Date().toISOString()
     };
     this.chatPosts.unshift(chatPost);
@@ -142,10 +142,11 @@ export class RoomDetailComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
     this.isLoggedIn = false;
+    this.user = null;
   }
 
   canChat(): boolean {
-    return !!this.user;
+    return this.isLoggedIn;
   }
 
   navigateTo(endpoint: string) {
