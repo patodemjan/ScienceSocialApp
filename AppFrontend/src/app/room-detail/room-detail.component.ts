@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { SafePipe } from '../safe.pipe';
 import { MOCK_ROOMS, Room, Topic, Post } from '../services/mock-posts';
 import { AuthService, User } from '../auth.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-room-detail',
@@ -17,7 +18,7 @@ export class RoomDetailComponent implements OnInit {
   room: Room | null = null;
   selectedTab: 'chat' | 'topic' | 'list' = 'chat';
   topics: Topic[] = [];
-  displayedTopics: Topic[] = []; // topics po filtrovaní
+  displayedTopics: Topic[] = [];
   selectedTopic: Topic | null = null;
 
   newTopicTitle = '';
@@ -31,7 +32,8 @@ export class RoomDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {
@@ -40,16 +42,17 @@ export class RoomDetailComponent implements OnInit {
 
     this.room = MOCK_ROOMS.find(r => r._id === roomId) || null;
     this.topics = this.room?.topics || [];
-    this.displayedTopics = [...this.topics]; // inicialne zobraz všetky
+
+    this.topics.sort((a, b) => a.title.localeCompare(b.title));
+    this.displayedTopics = [...this.topics];
 
     this.chatPosts = [
       ...this.room?.topics.flatMap(t => t.posts.filter(p => p.type==='chat')) || []
-    ];
+    ].sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 
     this.user = this.authService.getUser();
     this.isLoggedIn = !!this.user;
 
-    // Ak existujú topic-y, nastav prvý ako default pre topic tab
     if (this.topics.length > 0) {
       this.selectedTopic = this.topics[0];
     }
@@ -58,13 +61,13 @@ export class RoomDetailComponent implements OnInit {
   selectTab(tab: 'chat' | 'topic' | 'list') {
     this.selectedTab = tab;
     if(tab === 'topic' && !this.selectedTopic && this.topics.length > 0) {
-      this.selectedTopic = this.topics[0]; // hneď zobraz prvý topic
+      this.selectedTopic = this.topics[0];
     }
   }
 
   openTopic(topic: Topic) {
     this.selectedTopic = topic;
-    this.selectedTab = 'topic'; // hneď zobraz obsah topicu
+    this.selectedTab = 'topic';
   }
 
   addTopic() {
@@ -72,31 +75,39 @@ export class RoomDetailComponent implements OnInit {
     const newTopic: Topic = { id: Date.now().toString(), title: this.newTopicTitle, posts: [] };
     this.topics.push(newTopic);
     this.displayedTopics.push(newTopic);
+    this.displayedTopics.sort((a,b) => a.title.localeCompare(b.title));
     this.newTopicTitle = '';
   }
 
-  addPost(topic: Topic) {
-    if (!this.newPostContent.trim() || !this.user) return;
-    topic.posts.push({
+  addComment(topic: Topic, content: string) {
+    if (!content.trim() || !this.user) return;
+    topic.posts.unshift({
       id: Date.now().toString(),
-      content: this.newPostContent,
+      content,
       type: 'post',
       authorUsername: this.user.username,
       createdAt: new Date().toISOString()
     });
-    this.newPostContent = '';
   }
 
-  addPostWithLink(topic: Topic, link: string) {
-    if (!link.trim() || !this.user) return;
-    topic.posts.push({
-      id: Date.now().toString(),
-      content: 'Video post',
-      type: 'media',
-      authorUsername: this.user.username,
-      createdAt: new Date().toISOString(),
-      link
-    });
+  isYouTube(text: string): boolean {
+    return /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/.test(text);
+  }
+
+  isImage(text: string): boolean {
+    return /\.(jpg|jpeg|png|gif|webp)$/i.test(text);
+  }
+
+  isMediaLink(text: string): boolean {
+    return this.isYouTube(text) || this.isImage(text);
+  }
+
+  getSafeUrl(url: string): SafeResourceUrl {
+    if (this.isYouTube(url)) {
+      const videoId = url.split('v=')[1]?.split('&')[0] || url.split('/').pop();
+      return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${videoId}`);
+    }
+    return url as any;
   }
 
   sendChatMessage() {
@@ -108,7 +119,7 @@ export class RoomDetailComponent implements OnInit {
       authorUsername: this.user.username,
       createdAt: new Date().toISOString()
     };
-    this.chatPosts.push(chatPost);
+    this.chatPosts.unshift(chatPost);
     this.newChatMessage = '';
   }
 
@@ -118,17 +129,11 @@ export class RoomDetailComponent implements OnInit {
     this.selectedTopic = null;
   }
 
-  // Vyhľadávanie topicov podľa názvu
   searchTopic(searchValue: string) {
     const query = searchValue.trim().toLowerCase();
-    if (!query) {
-      this.displayedTopics = [...this.topics]; // zobraz všetky
-    } else {
-      this.displayedTopics = this.topics.filter(t => t.title.toLowerCase().includes(query));
-    }
+    this.displayedTopics = query ? this.topics.filter(t => t.title.toLowerCase().includes(query)) : [...this.topics];
   }
 
-  // Zobrazenie všetkých topicov
   viewAllTopics() {
     this.displayedTopics = [...this.topics];
   }
@@ -143,7 +148,7 @@ export class RoomDetailComponent implements OnInit {
     return !!this.user;
   }
 
-  navigateTo(page: string) {
-    this.router.navigate([`/mainpage/${page}`]);
+  navigateTo(endpoint: string) {
+    this.router.navigate([endpoint]);
   }
 }

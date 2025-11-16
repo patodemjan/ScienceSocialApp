@@ -17,17 +17,19 @@
 
   <!-- CHAT -->
   <div *ngIf="selectedTab==='chat'" id="chat">
-    <div class="chat-window">
-      <div *ngFor="let post of chatPosts" class="chat-post">
-        <span class="author">{{ post.authorUsername }}</span>
-        <span class="time">{{ post.createdAt | date:'short' }}</span>
-        <p>{{ post.content }}</p>
-      </div>
+    <div class="chat-input">
+      <input id="chatInput" [(ngModel)]="newChatMessage" [disabled]="!canChat()" placeholder="Type a message...">
+      <button id="send" (click)="sendChatMessage()" [disabled]="!canChat()">Send</button>
     </div>
 
-    <div class="chat-input">
-      <input [(ngModel)]="newChatMessage" [disabled]="!canChat()" placeholder="Type a message...">
-      <button (click)="sendChatMessage()" [disabled]="!canChat()">Send</button>
+    <div class="chat-window">
+      <div *ngFor="let post of chatPosts" class="chat-post">
+        <div class="chat-header">
+          <span class="author">{{ post.authorUsername }}</span>
+          <span class="time">{{ post.createdAt | date:'short' }}</span>
+        </div>
+        <p class="chat-content">{{ post.content }}</p>
+      </div>
     </div>
   </div>
 
@@ -46,19 +48,33 @@
   </div>
 
   <!-- TOPIC DETAIL -->
-  <div *ngIf="selectedTab==='topic' && selectedTopic" id="topicv">
+  <div *ngIf="selectedTab==='topic' && selectedTopic" id="topic">
     <h2>{{ selectedTopic.title }}</h2>
+
+    <!-- Input + Button hore, rovnaké ako chat -->
+    <div class="chat-input">
+  <input class="topic-input" #postInput placeholder="Add comment with text, emoji, or link"/>
+  <button class="topic-button" (click)="addComment(selectedTopic, postInput.value); postInput.value=''">Add Comment</button>
+</div>
 
     <div class="posts">
       <div *ngFor="let post of selectedTopic.posts" class="post">
-        <p><strong>{{ post.authorUsername }}</strong> ({{ post.createdAt | date:'short' }}): {{ post.content }}</p>
-        <iframe *ngIf="post.link" width="200" height="120" [src]="post.link | safe" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
+        <div class="topic-header">
+          <span class="author">{{ post.authorUsername }}</span>
+          <span class="time">{{ post.createdAt | date:'short' }}</span>
+        </div>
 
-    <div class="add-video">
-      <input #linkInput placeholder="Add video link"/>
-      <button (click)="addPostWithLink(selectedTopic, linkInput.value); linkInput.value=''">Add Video</button>
+        <ng-container *ngIf="isMediaLink(post.content)">
+          <iframe *ngIf="isYouTube(post.content)" width="200" height="120"
+                  [src]="getSafeUrl(post.content)" frameborder="0" allowfullscreen>
+          </iframe>
+          <img *ngIf="isImage(post.content)" [src]="post.content" width="200" height="120"/>
+        </ng-container>
+
+        <p class="topic-content" *ngIf="!isMediaLink(post.content)">
+          {{ post.content }}
+        </p>
+      </div>
     </div>
   </div>
 
@@ -66,19 +82,19 @@
 
 <footer class="footer">
   <div class="footeritems">
-    <a routerLink="/home">home</a>
-    <a routerLink="/mainpage/about">about us</a> 
-    <a routerLink="/mainpage/rooms">rooms</a>
-    <a routerLink="/mainpage/contact">contact</a>
-    <a *ngIf="!isLoggedIn" routerLink="/mainpage/login">sign in</a>
+    <a (click)="navigateTo('/mainpage/home')">home</a>
+    <a (click)="navigateTo('/mainpage/about')">about us</a> 
+    <a (click)="navigateTo('/mainpage/rooms')">rooms</a>
+    <a (click)="navigateTo('/mainpage/contact')">contact</a>
+    <a *ngIf="!isLoggedIn" (click)="navigateTo('/login')">sign in</a>
     <a *ngIf="isLoggedIn" (click)="signOut()">sign out</a>
   </div>
 
   <div class="footeritems">
-    <a (click)="navigateTo('help')">help</a>
-    <a (click)="navigateTo('faq')">faq</a>
-    <a (click)="navigateTo('cookies')">cookies</a>
-    <a (click)="navigateTo('impressum')">impressum</a>
+    <a (click)="navigateTo('/help')">help</a>
+    <a (click)="navigateTo('/faq')">faq</a>
+    <a (click)="navigateTo('/cookies')">cookies</a>
+    <a (click)="navigateTo('/impressum')">impressum</a>
   </div>
 
   <div class="footeritems">
