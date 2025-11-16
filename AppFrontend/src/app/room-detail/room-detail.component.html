@@ -35,10 +35,10 @@
 
   <!-- LIST OF TOPICS -->
   <div *ngIf="selectedTab==='list'" id="topicList">
-    <div class="search-bar">
-      <input #searchInput placeholder="Search topic..." />
-      <button (click)="searchTopic(searchInput.value)">Search</button>
-      <button (click)="viewAllTopics()">View All Topics</button>
+    <div class="chat-input search-bar">
+      <input class="topic-input" #searchInput placeholder="Search topic..." />
+      <button class="topic-button" (click)="searchTopic(searchInput.value)">Search</button>
+      <button class="topic-button" (click)="viewAllTopics()">View All Topics</button>
     </div>
     <ul>
       <li *ngFor="let topic of displayedTopics" (click)="openTopic(topic)">
@@ -51,11 +51,10 @@
   <div *ngIf="selectedTab==='topic' && selectedTopic" id="topic">
     <h2>{{ selectedTopic.title }}</h2>
 
-    <!-- Input + Button hore, rovnaké ako chat -->
     <div class="chat-input">
-  <input class="topic-input" #postInput placeholder="Add comment with text, emoji, or link"/>
-  <button class="topic-button" (click)="addComment(selectedTopic, postInput.value); postInput.value=''">Add Comment</button>
-</div>
+      <input class="topic-input" #postInput placeholder="Add comment with text, emoji, or link"/>
+      <button class="topic-button" (click)="addComment(selectedTopic, postInput.value); postInput.value=''">Add Comment</button>
+    </div>
 
     <div class="posts">
       <div *ngFor="let post of selectedTopic.posts" class="post">
@@ -65,10 +64,10 @@
         </div>
 
         <ng-container *ngIf="isMediaLink(post.content)">
-          <iframe *ngIf="isYouTube(post.content)" width="200" height="120"
+          <iframe *ngIf="isYouTube(post.content)" width="300" height="200"
                   [src]="getSafeUrl(post.content)" frameborder="0" allowfullscreen>
           </iframe>
-          <img *ngIf="isImage(post.content)" [src]="post.content" width="200" height="120"/>
+          <img *ngIf="isImage(post.content)" [src]="post.content" width="300" height="200"/>
         </ng-container>
 
         <p class="topic-content" *ngIf="!isMediaLink(post.content)">
@@ -77,7 +76,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 <footer class="footer">

@@ -377,50 +377,51 @@ export const MOCK_ROOMS: Room[] = [
   _id: '8',
   name: 'Chemistry',
   imageUrl: 'assets/psychology.webp',
-  description: 'Learn about atoms, molecules, reactions and laboratory science',
+  description: 'Explore the human mind, cognition and behavior',
   topics: [
     {
       id: 't8-1',
-      title: 'Organic Chemistry',
+      title: 'Cognitive Psychology',
       posts: [
-        { id: 'p8-1', content: 'Basics of hydrocarbons', type: 'post', authorUsername: 'anna', createdAt: new Date().toISOString() },
-        { id: 'p8-2', content: 'Organic reactions video', type: 'media', authorUsername: 'bob', createdAt: new Date().toISOString(), link: 'https://www.youtube.com/embed/p1' },
-        { id: 'p8-3', content: 'Functional groups chat', type: 'chat', authorUsername: 'cara', createdAt: new Date().toISOString() },
-        { id: 'p8-4', content: 'Aromatic compounds overview', type: 'post', authorUsername: 'dan', createdAt: new Date().toISOString() }
+        { id: 'p8-1', content: 'Attention and memory', type: 'post', authorUsername: 'anna', createdAt: new Date().toISOString() },
+        { id: 'p8-2', content: 'Cognition video', type: 'media', authorUsername: 'bob', createdAt: new Date().toISOString(), link: 'https://www.youtube.com/embed/p1' },
+        { id: 'p8-3', content: 'Problem solving chat', type: 'chat', authorUsername: 'cara', createdAt: new Date().toISOString() },
+        { id: 'p8-4', content: 'Cognitive bias post', type: 'post', authorUsername: 'dan', createdAt: new Date().toISOString() }
       ]
     },
     {
       id: 't8-2',
-      title: 'Inorganic Chemistry',
+      title: 'Social Psychology',
       posts: [
-        { id: 'p8-5', content: 'Periodic table fundamentals', type: 'post', authorUsername: 'ella', createdAt: new Date().toISOString() },
-        { id: 'p8-6', content: 'Metal reactions video', type: 'media', authorUsername: 'frank', createdAt: new Date().toISOString(), link: 'https://www.youtube.com/embed/p2' },
-        { id: 'p8-7', content: 'Ionic compounds chat', type: 'chat', authorUsername: 'george', createdAt: new Date().toISOString() },
-        { id: 'p8-8', content: 'Chemical bonding types', type: 'post', authorUsername: 'hannah', createdAt: new Date().toISOString() }
+        { id: 'p8-5', content: 'Group behavior', type: 'post', authorUsername: 'ella', createdAt: new Date().toISOString() },
+        { id: 'p8-6', content: 'Conformity video', type: 'media', authorUsername: 'frank', createdAt: new Date().toISOString(), link: 'https://www.youtube.com/embed/p2' },
+        { id: 'p8-7', content: 'Social influence chat', type: 'chat', authorUsername: 'george', createdAt: new Date().toISOString() },
+        { id: 'p8-8', content: 'Group dynamics post', type: 'post', authorUsername: 'hannah', createdAt: new Date().toISOString() }
       ]
     },
     {
       id: 't8-3',
-      title: 'Biochemistry',
+      title: 'Developmental Psychology',
       posts: [
-        { id: 'p8-9', content: 'Enzymes and proteins', type: 'chat', authorUsername: 'ian', createdAt: new Date().toISOString() },
-        { id: 'p8-10', content: 'DNA & RNA video', type: 'media', authorUsername: 'jane', createdAt: new Date().toISOString(), link: 'https://www.youtube.com/embed/p3' },
-        { id: 'p8-11', content: 'Metabolism basics', type: 'post', authorUsername: 'kate', createdAt: new Date().toISOString() },
-        { id: 'p8-12', content: 'Cell chemistry chat', type: 'chat', authorUsername: 'leo', createdAt: new Date().toISOString() }
+        { id: 'p8-9', content: 'Human development stages', type: 'chat', authorUsername: 'ian', createdAt: new Date().toISOString() },
+        { id: 'p8-10', content: 'Child learning video', type: 'media', authorUsername: 'jane', createdAt: new Date().toISOString(), link: 'https://www.youtube.com/embed/p3' },
+        { id: 'p8-11', content: 'Cognitive growth post', type: 'post', authorUsername: 'kate', createdAt: new Date().toISOString() },
+        { id: 'p8-12', content: 'Emotional development chat', type: 'chat', authorUsername: 'leo', createdAt: new Date().toISOString() }
       ]
     },
     {
       id: 't8-4',
-      title: 'Analytical Chemistry',
+      title: 'Clinical Psychology',
       posts: [
-        { id: 'p8-13', content: 'Chromatography basics', type: 'post', authorUsername: 'mike', createdAt: new Date().toISOString() },
-        { id: 'p8-14', content: 'Spectroscopy techniques video', type: 'media', authorUsername: 'nina', createdAt: new Date().toISOString(), link: 'https://www.youtube.com/embed/p4' },
-        { id: 'p8-15', content: 'Laboratory analysis chat', type: 'chat', authorUsername: 'oliver', createdAt: new Date().toISOString() },
-        { id: 'p8-16', content: 'Sample preparation intro', type: 'post', authorUsername: 'paula', createdAt: new Date().toISOString() }
+        { id: 'p8-13', content: 'Mental health basics', type: 'post', authorUsername: 'mike', createdAt: new Date().toISOString() },
+        { id: 'p8-14', content: 'Therapy techniques video', type: 'media', authorUsername: 'nina', createdAt: new Date().toISOString(), link: 'https://www.youtube.com/embed/p4' },
+        { id: 'p8-15', content: 'Coping strategies chat', type: 'chat', authorUsername: 'oliver', createdAt: new Date().toISOString() },
+        { id: 'p8-16', content: 'Stress management post', type: 'post', authorUsername: 'paula', createdAt: new Date().toISOString() }
       ]
     }
   ]
 }
+
 
 ];
 

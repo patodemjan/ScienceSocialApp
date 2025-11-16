@@ -4,13 +4,11 @@ import com.example.AppBackend.entity.Topic;
 import com.example.AppBackend.repository.RoomRepository;
 import com.example.AppBackend.repository.TopicRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.RestController;
-
 
 import java.util.List;
 
-@RestController
 @RequestMapping("/api/topics")
 @CrossOrigin(origins = "*")
 public class TopicController {
